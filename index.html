@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f1baa7;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #91d7ee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>HTML Table</h2>
+    <div id="linechart_material" style="width: 900px; height: 500px"></div>
+    <table id="table1">
+        <tr>
+            <th>Births</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <th>Ciautat Vella</th>
+            <th>Fixample</th>
+            <th>Gracia</th>
+        </tr>
+        <tr>
+            <td>2013</td>
+            <td>210</td>
+            <td>125</td>
+            <td>64</td>
+        </tr>
+        <tr>
+            <td>2014</td>
+            <td>222</td>
+            <td>135</td>
+            <td>73</td>
+        </tr>
+        <tr>
+            <td>2015</td>
+            <td>224</td>
+            <td>141</td>
+            <td>67</td>
+        </tr>
+        <tr>
+            <td>2016</td>
+            <td>236</td>
+            <td>132</td>
+            <td>68</td>
+
+        </tr>
+        <tr>
+            <td>2017</td>
+            <td>283</td>
+            <td>117</td>
+            <td>66</td>
+        </tr>
+    </table>
+    <div id="births"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['line']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+            var data = new google.visualization.arrayToDataTable([
+                ['year', 'ciuatat vella', 'Fixample', 'Gracia'],
+                ['2013', 210, 125, 64],
+                ['2014', 222, 135, 73],
+                ['2015', 224, 141, 67],
+                ['2016', 236, 132, 68],
+                ['2017', 283, 117, 66]
+            ]);
+
+            var options = {
+                title: 'Company Performance',
+                curveType: 'function',
+                legend: {
+                    position: 'bottom'
+                }
+            };
+
+
+            var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+            chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+    </script>
+</body>
+
+</html>
